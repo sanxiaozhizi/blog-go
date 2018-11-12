@@ -85,6 +85,10 @@ func PostLoading() {
 	TagMap = sync.Map{}
 
 	_load := func(path string) error {
+		if (!strings.HasSuffix(path, ".md")) {
+			return nil
+		}
+
 		bytes, err := ioutil.ReadFile(path)
 		if err != nil {
 			panic(err)

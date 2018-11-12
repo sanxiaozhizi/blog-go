@@ -8,11 +8,11 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/loadfield/sfki/model"
+	"github.com/sanxiaozhizi/blog-go/model"
 
 	"github.com/go-chi/chi"
 
-	_ "github.com/loadfield/sfki/model"
+	_ "github.com/sanxiaozhizi/blog-go/model"
 )
 
 var (
@@ -43,7 +43,6 @@ func main() {
 		json.NewEncoder(w).Encode(model.ExecuteQuery(query))
 	})
 	r.Post("/update", func(w http.ResponseWriter, r *http.Request) {
-		// curl -i -d "access_key=2333" http://localhost:3000/update
 		if r.FormValue("access_key") != config.AccessKey {
 			w.WriteHeader(401)
 			return
